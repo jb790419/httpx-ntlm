@@ -1,52 +1,46 @@
-requests-ntlm
-=============
+httpx-ntlm
+==========
 
-.. image:: https://travis-ci.org/requests/requests-ntlm.svg?branch=master
-    :target: https://travis-ci.org/requests/requests-ntlm
-
-.. image:: https://coveralls.io/repos/github/requests/requests-ntlm/badge.svg?branch=master
-    :target: https://coveralls.io/github/requests/requests-ntlm?branch=master
-
-This package allows for HTTP NTLM authentication using the requests library.
+This package allows for HTTP NTLM authentication using the HTTPX library. It is an
+adaptation of https://github.com/requests/requests-ntlm.
 
 Usage
 -----
 
-``HttpNtlmAuth`` extends requests ``AuthBase``, so usage is simple:
+``HttpNtlmAuth`` extends HTTPX ``Auth`` base calss, so usage is simple:
 
 .. code:: python
 
-    import requests
-    from requests_ntlm import HttpNtlmAuth
+    import httpx
+    from httpx_ntlm import HttpNtlmAuth
 
-    requests.get("http://ntlm_protected_site.com",auth=HttpNtlmAuth('domain\\username','password'))
-    
-``HttpNtlmAuth`` can be used in conjunction with a ``Session`` in order to
+    httpx.get("http://ntlm_protected_site.com",auth=HttpNtlmAuth('domain', 'username','password'))
+
+``HttpNtlmAuth`` can be used in conjunction with a ``Client`` in order to
 make use of connection pooling. Since NTLM authenticates connections,
 this is more efficient. Otherwise, each request will go through a new
 NTLM challenge-response.
 
 .. code:: python
 
-    import requests
-    from requests_ntlm import HttpNtlmAuth
+    import httpx
+    from httpx_ntlm import HttpNtlmAuth
 
-    session = requests.Session()
-    session.auth = HttpNtlmAuth('domain\\username','password')
-    session.get('http://ntlm_protected_site.com')
+    client = httpx.Client(auth=HttpNtlmAuth('domain', 'username','password'))
+    client.get('http://ntlm_protected_site.com')
 
-Installation
-------------
+Installation (not available yet)
+--------------------------------
 
-    pip install requests_ntlm
+    pip install httpx_ntlm
 
 Requirements
 ------------
 
-- requests_
+- httpx_
 - ntlm-auth_
 
-.. _requests: https://github.com/kennethreitz/requests/
+.. _httpx: https://github.com/encode/httpx
 .. _ntlm-auth: https://github.com/jborean93/ntlm-auth
 
 Authors
@@ -63,3 +57,7 @@ Authors
 - `Cory Benfield`_
 
 .. _Cory Benfield: https://github.com/Lukasa
+
+- `Ludovic Vaugeois`_
+
+.. _Ludovic Vaugeois: https://github.com/ulodciv

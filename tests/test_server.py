@@ -1,25 +1,29 @@
 import base64
 import struct
 
-from flask import Flask,request
+from flask import Flask, request
 from tests.test_utils import domain, username, password
 
 app = Flask(__name__)
+
 
 @app.route("/ntlm")
 def ntlm_auth():
     return get_auth_response('NTLM')
 
+
 @app.route("/negotiate")
 def negotiate_auth():
     return get_auth_response('Negotiate')
+
 
 @app.route("/both")
 def negotiate_and_ntlm_auth():
     return get_auth_response('NTLM', advertise_nego_and_ntlm=True)
 
+
 def get_auth_response(auth_type, advertise_nego_and_ntlm=False):
-    # Get the actual header that is returned by requests_ntlm
+    # Get the actual header that is returned by httpx_ntlm
     actual_header = request.headers.get('Authorization', '')
 
     # Check what the message type is from the header
@@ -58,7 +62,7 @@ def get_auth_response(auth_type, advertise_nego_and_ntlm=False):
             status_code = 200
             response = 'authed'
         else:
-            # Should only ever receive a negotiate (1) or auth (3) message from requests_ntlm
+            # Should only ever receive a negotiate (1) or auth (3) message from httpx_ntlm
             raise ValueError("Mismatch on NTLM message type, expecting: 1 or 3, actual: %d" % message_type)
 
     return response, status_code, response_headers
