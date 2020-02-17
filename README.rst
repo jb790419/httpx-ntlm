@@ -26,7 +26,7 @@ NTLM challenge-response.
     import httpx
     from httpx_ntlm import HttpNtlmAuth
 
-    client = httpx.Client(auth=HttpNtlmAuth('domain', 'username','password'))
+    client = httpx.Client(auth=HttpNtlmAuth('domain\\username','password'))
     client.get('http://ntlm_protected_site.com')
 
 Installation (not available yet)
