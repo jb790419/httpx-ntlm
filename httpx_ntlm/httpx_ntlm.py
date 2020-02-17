@@ -1,6 +1,6 @@
 import binascii
 import warnings
-from ssl import get_server_certificate
+from ssl import get_server_certificate, PEM_cert_to_DER_cert
 from typing import Generator
 
 from cryptography import x509
@@ -153,7 +153,8 @@ class HttpNtlmAuth(Auth):
         """
         if self.send_cbt and response.url.is_ssl:
             cert = get_server_certificate((response.url.host, response.url.port))
-            certificate_hash = _get_certificate_hash(cert)
+            der_cert = PEM_cert_to_DER_cert(cert)
+            certificate_hash = _get_certificate_hash(der_cert)
             return certificate_hash
         else:
             return None
