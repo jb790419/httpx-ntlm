@@ -14,7 +14,7 @@ Usage
     import httpx
     from httpx_ntlm import HttpNtlmAuth
 
-    httpx.get("http://ntlm_protected_site.com",auth=HttpNtlmAuth('domain', 'username','password'))
+    httpx.get("http://ntlm_protected_site.com",auth=HttpNtlmAuth('domain\\username','password'))
 
 ``HttpNtlmAuth`` can be used in conjunction with a ``Client`` in order to
 make use of connection pooling. Since NTLM authenticates connections,
@@ -43,21 +43,3 @@ Requirements
 .. _httpx: https://github.com/encode/httpx
 .. _ntlm-auth: https://github.com/jborean93/ntlm-auth
 
-Authors
--------
-
-- `Ben Toews`_
-
-.. _Ben Toews: https://github.com/mastahyeti
-
-- `Ian Cordasco`_
-
-.. _Ian Cordasco: https://github.com/sigmavirus24
-
-- `Cory Benfield`_
-
-.. _Cory Benfield: https://github.com/Lukasa
-
-- `Ludovic Vaugeois`_
-
-.. _Ludovic Vaugeois: https://github.com/ulodciv
