@@ -29,10 +29,10 @@ NTLM challenge-response.
     client = httpx.Client(auth=HttpNtlmAuth('domain\\username','password'))
     client.get('http://ntlm_protected_site.com')
 
-Installation (not available yet)
---------------------------------
+Installation
+------------
 
-    pip install httpx_ntlm
+    pip install httpx-ntlm
 
 Requirements
 ------------
