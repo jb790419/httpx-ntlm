@@ -8,8 +8,7 @@ from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import hashes
 from cryptography.exceptions import UnsupportedAlgorithm
 from ntlm_auth import ntlm
-from httpx.auth import Auth
-from httpx.models import Request, Response
+from httpx import Auth, Request, Response
 
 
 class UnknownSignatureAlgorithmOID(Warning):
