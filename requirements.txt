@@ -1,7 +1,8 @@
-httpx>=0.12.0
-ntlm-auth>=1.4.0
-cryptography>=2.8
+httpx==0.13.3
+ntlm-auth==1.4.*
+cryptography==2.9.*
 flask
 pytest
 pytest-cov
 wheel
+twine
