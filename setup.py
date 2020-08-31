@@ -7,7 +7,7 @@ setup(
     name="httpx_ntlm",
     version="0.0.6",
     packages=["httpx_ntlm"],
-    install_requires=["httpx==0.13.3", "ntlm-auth==1.4.*", "cryptography==2.9.*"],
+    install_requires=["httpx==0.14.*", "ntlm-auth==1.4.*", "cryptography==2.9.*"],
     provides=["httpx_ntlm"],
     author="Ludovic VAUGEOIS",
     author_email="ulodciv@gmail.com",
