@@ -1,4 +1,4 @@
-httpx==0.13.3
+httpx==0.14.*
 ntlm-auth==1.4.*
 cryptography==2.9.*
 flask
